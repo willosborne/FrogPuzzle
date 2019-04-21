@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="26">
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="30">
  <tileset firstgid="1" source="tileset-pond.tsx"/>
  <layer id="1" name="bgTiles" width="10" height="10">
   <properties>
@@ -14,8 +14,8 @@
 2,3,2,2,2,2,2,2,2,2,
 2,2,2,2,3,2,2,2,2,2,
 2,2,2,2,2,2,5,2,2,2,
-2,5,2,2,2,2,3,2,6,2,
-2,2,2,2,2,2,2,2,2,2
+6,5,2,2,2,2,3,2,6,2,
+6,6,2,2,2,2,2,2,2,2
 </data>
  </layer>
  <objectgroup id="2" name="platforms">
@@ -28,6 +28,9 @@
   <object id="16" template="LilyPad.tx" x="144" y="168"/>
   <object id="22" template="SolidGround.tx" x="144" y="192"/>
   <object id="25" template="SolidGround.tx" x="48" y="72"/>
+  <object id="26" template="SolidGround.tx" x="0" y="216"/>
+  <object id="27" template="SolidGround.tx" x="0" y="240"/>
+  <object id="29" template="SolidGround.tx" x="24" y="240"/>
  </objectgroup>
  <objectgroup id="3" name="objects">
   <object id="6" template="Player.tx" x="24" y="216"/>

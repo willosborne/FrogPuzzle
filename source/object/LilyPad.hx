@@ -56,7 +56,8 @@ class LilyPad extends PlatformObject
                 snapToGrid();
                 sliding = false;
                 velocity.set(0, 0);
-                state.turnRunning = false;
+
+                state.endTurn();
 
                 trace("Bump");
             }

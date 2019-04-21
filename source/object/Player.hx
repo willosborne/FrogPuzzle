@@ -70,6 +70,8 @@ class Player extends NormalObject
     {
         if (!ready()) return;
 
+        state.startTurn();
+
         var newX = gridX + dX;
         var newY = gridY + dY;
 

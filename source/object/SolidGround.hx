@@ -15,4 +15,9 @@ class SolidGround extends PlatformObject
         // makeGraphic(Utils.tileWidth, Utils.tileHeight, FlxColor.GRAY);
         // centerOrigin();
     }
+
+    override public function onMove(dX:Int, dY:Int) : Void
+    {
+        state.endTurn();
+    }
 }
