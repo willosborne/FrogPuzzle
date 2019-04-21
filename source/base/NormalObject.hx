@@ -13,6 +13,7 @@ enum FaceDirection
     RIGHT;
 }
 
+@:keepSub 
 class NormalObject extends FlxSprite 
 {
     public var rotates:Bool;
@@ -22,9 +23,9 @@ class NormalObject extends FlxSprite
     public var gridX:Int;
     public var gridY:Int;
 
-    var platform:PlatformObject;
+    public var platform:PlatformObject;
 
-    public function new(state:PlayState, gridX:Int, gridY:Int, ?rotates:Bool = false) 
+    public function new(state:PlayState, gridX:Int, gridY:Int, ?rotates:Bool=false) 
     {
         this.state = state;
         this.rotates = rotates;
@@ -38,14 +39,15 @@ class NormalObject extends FlxSprite
         // var cY = Utils.gridToWorldY(gridY);
 
         super(cX, cY);
-        
-        // platform = state.getPlatform(gridX, gridY);
-        // if (platform == null)
-        //     throw "Normal object created without platform";
     }
 
     public function takeTurn():Void
     {
 
+    }
+
+    public function onBump()
+    {
+        
     }
 }

@@ -4,8 +4,8 @@ import flixel.math.FlxPoint;
 
 class Utils
 {
-    public static inline var tileWidth:Int = 24;
-    public static inline var tileHeight:Int = 24;
+    public static var tileWidth:Int = 24;
+    public static var tileHeight:Int = 24;
 
     // public static var gridOffset:FlxPoint = new FlxPoint(0, 0);
     public static var gridOffsetX:Int = 0;

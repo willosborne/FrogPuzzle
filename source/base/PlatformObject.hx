@@ -2,6 +2,7 @@ package base;
 
 import flixel.FlxSprite;
 
+@:keepSub
 class PlatformObject extends FlxSprite 
 {
     public var rotates:Bool;
@@ -65,6 +66,15 @@ class PlatformObject extends FlxSprite
     {
         object = null;
         hasObjectInternal = false;
+    }
+
+    public function getObject() : NormalObject
+    {
+        if (hasObjectInternal)
+        {
+            return object;
+        }
+        return null;
     }
 
     public function takeTurn():Void

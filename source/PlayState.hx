@@ -32,29 +32,11 @@ class PlayState extends FlxState
 
 		var level:LevelLoader = new LevelLoader("assets/data/map-1.tmx", this);
 		add(level.bgTilemaps);
+
 		add(level.platforms);
 		add(level.objects);
 
 		platformGrid = level.platformGrid;
-
-		// add(platforms);
-		// add(objects);
-
-		// platformGrid = [for (x in 0...gridWidth) [for (y in 0...gridHeight) null]];
-
-		// addPlatform(new SolidGround(this, 5, 5));
-		// addPlatform(new SolidGround(this, 6, 5));
-		// addPlatform(new SolidGround(this, 7, 5));
-		// addPlatform(new SolidGround(this, 5, 6));
-		// addPlatform(new SolidGround(this, 0, 5));
-		// addPlatform(new LilyPad(this, 4, 5));
-		// addPlatform(new LilyPad(this, 0, 4));
-		
-		// addPlatform(new SolidGround(this, 0, 0));
-		// addPlatform(new LilyPad(this, 1, 0));
-		// addPlatform(new Tree(this, 8, 0));
-
-		// addObject(new Player(this, 5, 5));
 		
 		// add(new FlxText(10, 10, 100, "Hello world!"));
 

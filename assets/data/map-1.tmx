@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="23">
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="25">
  <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
   <image source="../images/tileset-pond.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="101" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
+  <image source="../images/tileset-pond.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="201" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
   <image source="../images/tileset-pond.png" width="256" height="256"/>
  </tileset>
  <layer id="1" name="bgTiles" width="10" height="10">
@@ -11,16 +14,16 @@
    <property name="tileset" value="tileset-pond"/>
   </properties>
   <data encoding="csv">
-2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,3,2,5,2,2,2,
-3,2,2,2,2,2,2,2,3,2,
-2,2,2,2,3,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,2,2,
-2,3,2,2,2,2,5,2,2,2,
-2,6,2,2,2,2,2,3,5,2,
-2,2,2,2,2,2,2,2,2,2
+102,102,102,102,102,102,102,102,102,102,
+102,102,102,102,102,102,102,102,102,102,
+102,102,102,102,103,102,105,102,102,102,
+103,102,102,102,102,102,102,102,103,102,
+102,102,102,102,103,102,102,102,102,102,
+102,102,102,102,102,102,102,102,102,102,
+102,102,102,102,102,102,102,102,102,102,
+102,103,102,102,102,102,106,102,102,102,
+102,106,102,102,102,102,102,103,105,102,
+102,102,102,102,102,102,102,102,102,102
 </data>
  </layer>
  <objectgroup id="2" name="platforms">
@@ -35,6 +38,6 @@
  </objectgroup>
  <objectgroup id="3" name="objects">
   <object id="6" name="Player" type="Player" gid="109" x="24" y="216" width="24" height="24"/>
-  <object id="7" type="Goal" gid="111" x="144" y="72" width="24" height="24"/>
+  <object id="24" type="Goal" gid="211" x="144" y="72" width="24" height="24"/>
  </objectgroup>
 </map>

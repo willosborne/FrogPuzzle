@@ -11,7 +11,7 @@ class Tree extends PlatformObject
         super(state, gridX, gridY, rotates);
         
         makeGraphic(Utils.tileWidth, Utils.tileHeight, FlxColor.BROWN);
-        centerOrigin();
+        // centerOrigin();
     }
 
     override public function hasObject()

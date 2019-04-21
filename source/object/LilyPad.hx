@@ -22,7 +22,7 @@ class LilyPad extends PlatformObject
         super(state, gridX, gridY, rotates);
         
         makeGraphic(Utils.tileWidth, Utils.tileHeight, FlxColor.LIME);
-        centerOrigin();
+        // centerOrigin();
     }
 
     override public function update(elapsed:Float)
@@ -92,6 +92,14 @@ class LilyPad extends PlatformObject
         {
             newGridX += dX;
             newGridY += dY;
+
+            if (newGridX < 0 || newGridX >= state.gridWidth
+                || newGridY < 0 || newGridY >= state.gridHeight)
+            {   
+                newGridX -= dX;
+                newGridY -= dY;
+                break;
+            }
         }
         // TODO: handle case where lilypad floats offscreen
 

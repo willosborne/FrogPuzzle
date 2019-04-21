@@ -82,6 +82,9 @@ class Player extends NormalObject
         {
             if (newPlatform.hasObject()) 
             {
+                var obj:NormalObject = newPlatform.getObject();
+                if (obj != null)
+                    obj.onBump();
                 // interact with object on platform
                 vibrate(4);
             }

@@ -50,6 +50,9 @@ class LevelLoader extends TiledMap
         gridWidth = width;
         gridHeight = height;
 
+        Utils.tileWidth = tileWidth;
+        Utils.tileHeight = tileWidth;
+
         this.state = state;
 
         // trace(tilesetArray);
@@ -101,13 +104,19 @@ class LevelLoader extends TiledMap
             throw 'TileSet $tileSheetName not found.'; 
         }
 
+        //TODO: rewrite to use external tilesets, then merge them here
+        // http://forum.haxeflixel.com/topic/764/another-invalid-field-access-__s-issue/3
+
         // resolve full path to image
         var rawPath = new Path(tileset.imageSource);
         var processedPath = TILESET_PATH + rawPath.file + "." + rawPath.ext;
 
         var tilemap:FlxTilemapExt = new FlxTilemapExt();
         tilemap.loadMapFromArray(tileLayer.tileArray, width, height, processedPath,
-            tileset.tileWidth, tileset.tileHeight, OFF, tileset.firstGID);
+            tileset.tileWidth, tileset.tileHeight, OFF, tileset.firstGID, 1, 1);
+
+        tilemap.x = tileWidth / 2;
+        tilemap.y = tileHeight / 2;
 
 
         // TODO: animated tiles here
@@ -183,12 +192,19 @@ class LevelLoader extends TiledMap
         for (o in objectLayer.objects)
         {
             var obj:NormalObject = createObject(o);
+            if (obj == null)
+                trace("Null object?");
 
+            var plat:PlatformObject = platformGrid[obj.gridX][obj.gridY];
 
-            if (platformGrid[obj.gridX][obj.gridY] != null)
+            if (plat != null)
             {
-                if (!platformGrid[obj.gridX][obj.gridY].hasObject())
-                    platformGrid[obj.gridX][obj.gridY].setObject(obj);
+                if (!plat.hasObject())
+                {
+                    trace ("Set platform object");
+                    plat.setObject(obj);
+                    obj.platform = plat;
+                }
                 else
                     throw "Only one platform per grid space.\n" +
                         'Multiple objects at (${obj.gridX}, ${obj.gridY}).';
