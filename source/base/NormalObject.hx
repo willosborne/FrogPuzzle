@@ -13,8 +13,7 @@ enum FaceDirection
     RIGHT;
 }
 
-@:keepSub 
-class NormalObject extends FlxSprite 
+@:keepSub class NormalObject extends FlxSprite 
 {
     public var rotates:Bool;
 
@@ -48,6 +47,6 @@ class NormalObject extends FlxSprite
 
     public function onBump()
     {
-        
+
     }
 }

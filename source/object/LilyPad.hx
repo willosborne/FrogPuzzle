@@ -11,9 +11,6 @@ class LilyPad extends PlatformObject
     var slideVelocity:Float = 100;
     public var sliding:Bool = false;
 
-    // var lastX:Float;
-    // var lastY:Float;
-
     var targetGridX:Int;
     var targetGridY:Int;
 
@@ -21,7 +18,8 @@ class LilyPad extends PlatformObject
     {
         super(state, gridX, gridY, rotates);
         
-        makeGraphic(Utils.tileWidth, Utils.tileHeight, FlxColor.LIME);
+        loadGraphic("assets/images/lilypad-sheet.png", true, 24, 24);
+        animation.add("idle", [0], 10, false);
         // centerOrigin();
     }
 

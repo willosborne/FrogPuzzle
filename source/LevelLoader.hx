@@ -111,6 +111,8 @@ class LevelLoader extends TiledMap
         var rawPath = new Path(tileset.imageSource);
         var processedPath = TILESET_PATH + rawPath.file + "." + rawPath.ext;
 
+        trace('Loading tileset image $processedPath');
+
         var tilemap:FlxTilemapExt = new FlxTilemapExt();
         tilemap.loadMapFromArray(tileLayer.tileArray, width, height, processedPath,
             tileset.tileWidth, tileset.tileHeight, OFF, tileset.firstGID, 1, 1);
@@ -233,9 +235,8 @@ class LevelLoader extends TiledMap
 
         var objName:String = o.type;
 
-
-        trace('Type to create: object.$objName');
-        trace('Grid position: ($gridX, $gridY)');
+        // trace('Type to create: object.$objName');
+        // trace('Grid position: ($gridX, $gridY)');
 
         var obj:PlatformObject = Type.createInstance(Type.resolveClass("object." + objName),
                                     [state, gridX, gridY]);
@@ -254,13 +255,11 @@ class LevelLoader extends TiledMap
 
         var objName:String = o.type;
         
-        trace('Type to create: object.$objName');
-        trace('Grid position: ($gridX, $gridY)');
+        // trace('Type to create: object.$objName');
+        // trace('Grid position: ($gridX, $gridY)');
 
         var obj:NormalObject = Type.createInstance(Type.resolveClass("object." + objName),
                                     [state, gridX, gridY]);
-
-        trace("Created");
 
         return obj;
     }

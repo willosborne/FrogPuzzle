@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="25">
- <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
-  <image source="../images/tileset-pond.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="101" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
-  <image source="../images/tileset-pond.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="201" source="tileset-pond.tsx"/>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="26">
+ <tileset firstgid="1" source="tileset-pond.tsx"/>
  <layer id="1" name="bgTiles" width="10" height="10">
   <properties>
    <property name="tileset" value="tileset-pond"/>
   </properties>
   <data encoding="csv">
-102,102,102,102,102,102,102,102,102,102,
-102,102,102,102,102,102,102,102,102,102,
-102,102,102,102,103,102,105,102,102,102,
-103,102,102,102,102,102,102,102,103,102,
-102,102,102,102,103,102,102,102,102,102,
-102,102,102,102,102,102,102,102,102,102,
-102,102,102,102,102,102,102,102,102,102,
-102,103,102,102,102,102,106,102,102,102,
-102,106,102,102,102,102,102,103,105,102,
-102,102,102,102,102,102,102,102,102,102
+2,2,2,2,2,2,2,2,2,2,
+2,3,2,2,3,2,2,2,2,2,
+2,2,6,2,2,2,4,3,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,3,2,
+2,3,2,2,2,2,2,2,2,2,
+2,2,2,2,3,2,2,2,2,2,
+2,2,2,2,2,2,5,2,2,2,
+2,5,2,2,2,2,3,2,6,2,
+2,2,2,2,2,2,2,2,2,2
 </data>
  </layer>
  <objectgroup id="2" name="platforms">
@@ -33,6 +27,7 @@
   <object id="14" template="LilyPad.tx" x="72" y="192"/>
   <object id="16" template="LilyPad.tx" x="144" y="168"/>
   <object id="22" template="SolidGround.tx" x="144" y="192"/>
+  <object id="25" template="SolidGround.tx" x="48" y="72"/>
  </objectgroup>
  <objectgroup id="3" name="objects">
   <object id="6" template="Player.tx" x="24" y="216"/>

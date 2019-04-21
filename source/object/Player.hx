@@ -23,8 +23,11 @@ class Player extends NormalObject
     {
         super(state, gridX, gridY, true);
 
-        makeGraphic(Utils.tileWidth - 4, Utils.tileHeight - 4, FlxColor.GREEN);
-        offset.set(-2, -2);
+        // makeGraphic(Utils.tileWidth - 4, Utils.tileHeight - 4, FlxColor.GREEN);
+        loadGraphic("assets/images/frog-sheet.png", true, 24, 24);
+        offset.set(2, 6);
+
+        animation.add("lr-idle", [0], 6);
     }
 
     override public function update(elapsed:Float)

@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxState;
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup;
 
@@ -12,10 +13,17 @@ import object.SolidGround;
 import object.Tree;
 import object.Player;
 import object.LilyPad;
+import object.Goal;
+
+import haxe.ds.GenericStack;
+
+typedef Grid = Array<Array<PlatformObject>>;
 
 class PlayState extends FlxState
 {
-	var platformGrid:Array<Array<PlatformObject>>;
+	var platformGrid:Grid;
+
+	var undoStack:GenericStack<Grid>;
 
 	public var gridWidth:Int = 10;
 	public var gridHeight:Int = 10;
@@ -41,6 +49,8 @@ class PlayState extends FlxState
 		// add(new FlxText(10, 10, 100, "Hello world!"));
 
 		FlxG.mouse.visible = false;
+
+		// add(new FlxSprite(100, 100, "assets/images/frog.png"));
 
 		super.create();
 	}
