@@ -24,7 +24,7 @@ class NormalObject extends FlxSprite
 
     var platform:PlatformObject;
 
-    public function new(state:PlayState, gridX:Int, gridY:Int, ?rotates:Bool=false) 
+    public function new(state:PlayState, gridX:Int, gridY:Int, ?rotates:Bool = false) 
     {
         this.state = state;
         this.rotates = rotates;
@@ -39,9 +39,9 @@ class NormalObject extends FlxSprite
 
         super(cX, cY);
         
-        platform = state.getPlatform(gridX, gridY);
-        if (platform == null)
-            throw "Normal object created without platform";
+        // platform = state.getPlatform(gridX, gridY);
+        // if (platform == null)
+        //     throw "Normal object created without platform";
     }
 
     public function takeTurn():Void

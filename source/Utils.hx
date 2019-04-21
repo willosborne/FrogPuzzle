@@ -41,6 +41,16 @@ class Utils
         return Std.int((Y - gridOffsetY) / tileHeight);
     }
 
+    public static function worldToGridXAbs(X:Float) : Int 
+    {
+        return Std.int(X / tileWidth);
+    }
+
+    public static function worldToGridYAbs(Y:Float) : Int 
+    {
+        return Std.int(Y / tileHeight);
+    }
+
     public static function sign(K:Float):Int 
     {
         if (K < 0)

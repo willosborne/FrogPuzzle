@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="4" nextobjectid="23">
+ <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
+  <image source="../images/tileset-pond.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="101" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
+  <image source="../images/tileset-pond.png" width="256" height="256"/>
+ </tileset>
+ <layer id="1" name="bgTiles" width="10" height="10">
+  <properties>
+   <property name="tileset" value="tileset-pond"/>
+  </properties>
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,3,2,5,2,2,2,
+3,2,2,2,2,2,2,2,3,2,
+2,2,2,2,3,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,3,2,2,2,2,5,2,2,2,
+2,6,2,2,2,2,2,3,5,2,
+2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="platforms">
+  <object id="2" type="LilyPad" gid="107" x="48" y="216" width="24" height="24"/>
+  <object id="5" type="SolidGround" gid="110" x="24" y="216" width="24" height="24"/>
+  <object id="8" type="SolidGround" gid="110" x="192" y="216" width="24" height="24"/>
+  <object id="11" type="LilyPad" gid="107" x="48" y="192" width="24" height="24"/>
+  <object id="12" type="SolidGround" gid="110" x="144" y="72" width="24" height="24"/>
+  <object id="14" type="LilyPad" gid="107" x="72" y="192" width="24" height="24"/>
+  <object id="16" type="LilyPad" gid="107" x="144" y="168" width="24" height="24"/>
+  <object id="22" type="SolidGround" gid="110" x="144" y="192" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="6" name="Player" type="Player" gid="109" x="24" y="216" width="24" height="24"/>
+  <object id="7" type="Goal" gid="111" x="144" y="72" width="24" height="24"/>
+ </objectgroup>
+</map>
