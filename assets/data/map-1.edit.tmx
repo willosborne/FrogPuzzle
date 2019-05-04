@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="31">
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="60">
+ <properties>
+  <property name="Name" value="Level One"/>
+ </properties>
  <tileset firstgid="1" source="tileset-pond.tsx"/>
  <layer id="1" name="bgTiles" width="10" height="10">
   <properties>
@@ -7,35 +10,44 @@
   </properties>
   <data encoding="csv">
 2,2,2,2,2,2,2,2,2,2,
-2,3,2,2,3,2,2,2,2,2,
-2,2,6,2,2,2,4,3,2,2,
-2,2,2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,3,2,
 2,3,2,2,2,2,2,2,2,2,
-2,2,2,2,3,2,2,2,2,2,
-2,2,2,2,2,2,5,2,2,2,
-6,5,2,2,2,2,3,2,6,2,
-6,6,2,2,2,2,2,2,2,2
+2,2,6,6,2,2,2,3,5,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,3,2,2,6,6,2,2,2,
+2,2,2,2,3,2,2,2,2,3,
+2,6,2,2,2,2,2,2,2,2,
+3,2,2,2,2,2,6,2,2,2,
+2,5,6,2,2,2,3,2,6,2,
+2,2,2,2,2,2,2,2,2,2
 </data>
  </layer>
  <objectgroup id="2" name="platforms">
-  <object id="2" template="LilyPad.tx" x="48" y="216"/>
   <object id="5" template="SolidGround.tx" x="24" y="216"/>
-  <object id="8" template="SolidGround.tx" x="192" y="216"/>
-  <object id="11" template="LilyPad.tx" x="48" y="192"/>
-  <object id="12" template="SolidGround.tx" x="144" y="72"/>
-  <object id="14" template="LilyPad.tx" x="72" y="192"/>
-  <object id="16" template="LilyPad.tx" x="144" y="168"/>
-  <object id="22" template="SolidGround.tx" x="144" y="192"/>
-  <object id="25" template="SolidGround.tx" x="48" y="72"/>
-  <object id="26" template="SolidGround.tx" x="0" y="216"/>
-  <object id="27" template="SolidGround.tx" x="0" y="240"/>
-  <object id="29" template="SolidGround.tx" x="24" y="240"/>
+  <object id="35" template="LilyPad.tx" x="72" y="216"/>
+  <object id="36" template="LilyPad.tx" x="192" y="192"/>
+  <object id="37" template="LilyPad.tx" x="168" y="72"/>
+  <object id="39" template="LilyPad.tx" x="48" y="96"/>
+  <object id="40" template="LilyPad.tx" x="72" y="192"/>
+  <object id="41" template="SolidGround.tx" x="48" y="216"/>
+  <object id="42" template="SolidGround.tx" x="192" y="216"/>
+  <object id="43" template="SolidGround.tx" x="192" y="72"/>
+  <object id="44" template="SolidGround.tx" x="24" y="168"/>
+  <object id="45" template="SolidGround.tx" x="144" y="192"/>
+  <object id="46" template="SolidGround.tx" x="48" y="72"/>
+  <object id="47" template="SolidGround.tx" x="72" y="72"/>
+  <object id="49" template="SolidGround.tx" x="144" y="120"/>
+  <object id="52" template="LilyPad.tx" x="144" y="168"/>
+  <object id="53" template="LilyPad.tx" x="120" y="144"/>
+  <object id="57" template="LilyPad.tx" x="96" y="168"/>
+  <object id="59" template="SolidGround.tx" x="120" y="120"/>
  </objectgroup>
  <objectgroup id="3" name="objects">
   <object id="6" template="Player.tx" x="24" y="216"/>
  </objectgroup>
  <objectgroup id="4" name="floaters">
-  <object id="30" template="Goal.tx" x="144" y="72"/>
+  <object id="54" template="Goal.tx" x="24" y="168"/>
+  <object id="55" template="Fly.tx" x="192" y="216"/>
+  <object id="56" template="Fly.tx" x="72" y="72"/>
+  <object id="58" template="Fly.tx" x="144" y="120"/>
  </objectgroup>
 </map>

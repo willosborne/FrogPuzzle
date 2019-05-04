@@ -1,5 +1,12 @@
 # Frog Puzzle notes
 
+## Plan
+- Frog tongue mechanics
+- Objects you can push
+- Other frogs
+- Logs
+- Sinking lilypads
+
 ## Core ideas
 - Frog jumps around from one square to another
 - Entire screen is pond, with small islands dotted around

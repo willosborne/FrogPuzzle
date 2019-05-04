@@ -15,6 +15,7 @@ import object.Tree;
 import object.Player;
 import object.LilyPad;
 import object.Goal;
+import object.Fly;
 
 import UndoStack;
 
@@ -36,6 +37,11 @@ class PlayState extends FlxState
 
 	public var levelManager:LevelManager;
 
+	public var flies:Int;
+
+	private var flyCounter:FlxText;
+	private var levelNameText:FlxText;
+
 	override public function create():Void
 	{
 		levelManager = new LevelManager(this);
@@ -54,6 +60,9 @@ class PlayState extends FlxState
 		platforms = level.platforms;
 		objects = level.objects;
 		floaters = level.floaters;
+		
+		flyCounter = new FlxText(10,24, 100, "Flies: 0");
+		levelNameText = new FlxText(10, 10, 100, level.name);
 
 		add(level.bgTilemaps);
 
@@ -61,10 +70,19 @@ class PlayState extends FlxState
 		add(level.objects);
 		add(level.floaters);
 
+		add(flyCounter);
+		add(levelNameText);
+
 		platformGrid = level.platformGrid;
 		floaterGrid = level.floaterGrid;
 		
 		undoStack = new UndoStack(this);
+
+		flies = 0;
+	}
+
+	public function win() {
+		trace('Level complete!\nFlies: $flies');
 	}
 
 	override public function update(elapsed:Float):Void
@@ -80,6 +98,23 @@ class PlayState extends FlxState
 		{
 			undoStack.popState();
 		}
+
+		if (FlxG.keys.justPressed.R)
+		{
+			// if (!turnRunning)
+			undoStack.resetState();
+		}
+
+		if (FlxG.keys.justPressed.W)
+		{
+			FlxG.resetState();
+		}
+        if (FlxG.keys.justPressed.RBRACKET) 
+        {
+            levelManager.nextLevel();
+        }
+
+		flyCounter.text = 'Flies: $flies';
 
 		super.update(elapsed);
 	}
@@ -138,6 +173,8 @@ class PlayState extends FlxState
 		floaterGrid = [for (x in 0...gridWidth) [for (y in 0...gridHeight) null]];
 		floaters.clear(); // NOTE: do I need to destroy everything?
 		objects.clear();
+
+		flies = 0;
 	}
 	
 	public function startTurn()

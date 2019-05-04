@@ -60,7 +60,7 @@ class LilyPad extends PlatformObject
                 state.endTurn();
                 state.tick();
 
-                trace("Bump");
+                // trace("Bump");
             }
             
         }

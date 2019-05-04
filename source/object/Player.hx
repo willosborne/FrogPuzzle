@@ -18,6 +18,8 @@ class Player extends NormalObject
     private var baseY:Float;
 
     private var moving:Bool = false;
+
+    public var faceDir:FaceDirection;
     
     public function new(state:PlayState, gridX:Int, gridY:Int) 
     {
@@ -25,9 +27,13 @@ class Player extends NormalObject
 
         // makeGraphic(Utils.tileWidth - 4, Utils.tileHeight - 4, FlxColor.GREEN);
         loadGraphic("assets/images/frog-sheet.png", true, 24, 24);
-        offset.set(2, 6);
+        offset.set(1, 6);
+
+        faceDir = RIGHT;
 
         animation.add("lr-idle", [0], 6);
+        animation.add("back-idle", [1], 6);
+        animation.add("front-idle", [2], 6);
     }
 
     override public function update(elapsed:Float)
@@ -37,26 +43,32 @@ class Player extends NormalObject
         if (FlxG.keys.justPressed.LEFT) 
         {
             tryMove(-1, 0);
+            faceDir = LEFT;
+            animation.play("lr-idle", false);
+            flipX = true;
         }
         else if (FlxG.keys.justPressed.RIGHT) 
         {
             tryMove(1, 0);
+            faceDir = RIGHT;
+            animation.play("lr-idle", false);
+            flipX = false;
         }
         else if (FlxG.keys.justPressed.UP) 
         {
             tryMove(0, -1);
+            animation.play("back-idle", false);
+            flipX = false;
         }
         else if (FlxG.keys.justPressed.DOWN) 
         {
             tryMove(0, 1);
+            animation.play("front-idle", false);
+            flipX = false;
         }
         else if (FlxG.keys.justPressed.SPACE) 
         {
             wait();
-        }
-        else if (FlxG.keys.justPressed.RBRACKET) 
-        {
-            state.levelManager.nextLevel();
         }
 
         if (vibrateTimer > 0) 

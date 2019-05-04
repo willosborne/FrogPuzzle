@@ -4,7 +4,8 @@ class LevelManager
 {
     var levels:Array<String> = [
 		"assets/data/map-1.tmx",
-		"assets/data/map-2.tmx"
+		"assets/data/map-2.tmx",
+		"assets/data/map-3.tmx"
     ];
 
     var currentLevel:Int;

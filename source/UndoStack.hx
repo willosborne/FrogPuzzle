@@ -28,7 +28,8 @@ typedef FloaterState = {
 
 typedef Snapshot = {
     platforms:Array<PlatformState>,
-    floaters:Array<FloaterState>
+    floaters:Array<FloaterState>,
+    flies:Int
 }
 
 class UndoStack
@@ -56,6 +57,19 @@ class UndoStack
             trace("Undo!");
             var snap:Snapshot = stack.pop();
             restoreState(snap);
+        }
+    }
+
+    public function resetState()
+    {
+        if (!stack.isEmpty())
+        {
+            var item;
+            do 
+                item = stack.pop()
+            while (stack.head != null);
+            
+            restoreState(item);
         }
     }
 
@@ -105,7 +119,8 @@ class UndoStack
         });
         return {
             platforms: platformArr,
-            floaters: floaterArr
+            floaters: floaterArr,
+            flies: state.flies
         };
     }
 
@@ -131,7 +146,6 @@ class UndoStack
             state.setPlatform(platState.x, platState.y, plat);
         }
 
-        //TODO: check that restoring floaters works
         for (flState in snapshot.floaters) 
         {
             var fl:FloatingObject = Type.createInstance(flState.type, [state, flState.x, flState.y]);
@@ -140,5 +154,8 @@ class UndoStack
 
             state.setFloater(flState.x, flState.y, fl);
         }
+
+        state.flies = snapshot.flies;
+        state.endTurn();
     }
 }

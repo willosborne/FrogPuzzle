@@ -8,7 +8,7 @@ import base.NormalObject;
 import object.Player;
 
 @:keep
-class Goal extends FloatingObject 
+class Fly extends FloatingObject 
 {   
     @:keep
     public function new(state:PlayState, gridX:Int, gridY:Int) 
@@ -18,15 +18,16 @@ class Goal extends FloatingObject
         // makeGraphic(Utils.tileWidth, Utils.tileHeight, FlxColor.YELLOW);
         // centerOrigin();
         // loadGraphic(AssetPaths.goal__png, false, 24, 24);
-        loadGraphic("assets/images/goal.png", false, 24, 24);
+        loadGraphic("assets/images/fly.png", false, 24, 24);
     }
 
     override public function onHover(obj:NormalObject)
     {
         if (Std.is(obj, Player))
         {
-            state.win();
-            state.levelManager.nextLevel();
+            this.kill();
+            state.flies++;
+            state.clearFloater(gridX, gridY);
         }
     }
 }

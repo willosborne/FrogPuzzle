@@ -41,6 +41,8 @@ class LevelLoader extends TiledMap
     public var gridWidth:Int;
     public var gridHeight:Int;
 
+    public var name:String;
+
     private var state:PlayState;
 
     public function new(tiledLevel:Dynamic, state:PlayState)
@@ -59,6 +61,11 @@ class LevelLoader extends TiledMap
         Utils.tileHeight = tileWidth;
 
         this.state = state;
+
+        name = this.properties.get("Name");
+        if (name == null)
+            name = "###NAME NOT SET###";
+
 
         // trace(tilesetArray);
 
