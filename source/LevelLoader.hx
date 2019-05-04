@@ -21,6 +21,9 @@ import haxe.io.Path;
 
 import base.PlatformObject;
 import base.NormalObject;
+import base.FloatingObject;
+
+import UndoStack;
 
 class LevelLoader extends TiledMap
 {
@@ -30,8 +33,10 @@ class LevelLoader extends TiledMap
 
     public var platforms:FlxTypedGroup<PlatformObject>;
     public var objects:FlxTypedGroup<NormalObject>;
+    public var floaters:FlxTypedGroup<FloatingObject>;
 
-	public var platformGrid:Array<Array<PlatformObject>>;
+	public var platformGrid:Grid<PlatformObject>;
+	public var floaterGrid:Grid<FloatingObject>;
 
     public var gridWidth:Int;
     public var gridHeight:Int;
@@ -70,6 +75,8 @@ class LevelLoader extends TiledMap
 
         loadPlatforms();
         loadObjects();
+
+        loadFloaters();
     }
 
     function loadTileLayer(layerName:String) : FlxGroup 
@@ -171,6 +178,47 @@ class LevelLoader extends TiledMap
 
 
     /**
+        Load the floater group.
+        
+        Side effects: 
+         - initialises `floaterGrid` with objects.
+         - sets `floaters` to platform group
+
+        @return new contents of `platforms` group.
+    **/
+    function loadFloaters() : FlxTypedGroup<FloatingObject>
+    {
+        var group = new FlxTypedGroup<FloatingObject>();
+
+		floaterGrid = [for (x in 0...gridWidth) [for (y in 0...gridHeight) null]];
+
+        var layer = getLayer("floaters");
+        if (layer == null)
+            throw "floaters layer not found in map";
+        
+        if (layer.type != TiledLayerType.OBJECT)
+            throw "platforms layer has wrong type. Should contain objects";
+        var objectLayer:TiledObjectLayer = cast layer;
+
+        for (o in objectLayer.objects)
+        {
+            var fl:FloatingObject = createFloater(o);
+
+            if (floaterGrid[fl.gridX][fl.gridY] != null)
+                throw "Only one floater per grid space.\n" +
+                        'Multiple objects at (${fl.gridX}, ${fl.gridY}).';
+
+            floaterGrid[fl.gridX][fl.gridY] = fl;
+
+            group.add(fl);
+        }
+
+        floaters = group;
+
+        return group;
+    }
+
+    /**
         Load the normal objects group.
         
         Side effects: 
@@ -259,6 +307,25 @@ class LevelLoader extends TiledMap
         // trace('Grid position: ($gridX, $gridY)');
 
         var obj:NormalObject = Type.createInstance(Type.resolveClass("object." + objName),
+                                    [state, gridX, gridY]);
+
+        return obj;
+    }
+
+    function createFloater(o:TiledObject) : FloatingObject
+    {
+        var x:Int = o.x;
+        var y:Int = o.y;
+
+        var gridX:Int = Std.int(x / tileWidth);
+        var gridY:Int = Std.int(y / tileWidth) - 1; // different indexing
+
+        var objName:String = o.type;
+        
+        // trace('Type to create: object.$objName');
+        // trace('Grid position: ($gridX, $gridY)');
+
+        var obj:FloatingObject = Type.createInstance(Type.resolveClass("object." + objName),
                                     [state, gridX, gridY]);
 
         return obj;

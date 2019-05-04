@@ -50,6 +50,14 @@ class Player extends NormalObject
         {
             tryMove(0, 1);
         }
+        else if (FlxG.keys.justPressed.SPACE) 
+        {
+            wait();
+        }
+        else if (FlxG.keys.justPressed.RBRACKET) 
+        {
+            state.levelManager.nextLevel();
+        }
 
         if (vibrateTimer > 0) 
         {
@@ -64,6 +72,14 @@ class Player extends NormalObject
                 y = baseY;
             }
         }
+    }
+
+    private function wait():Void
+    {
+        if (!ready()) return;
+
+        state.startTurn();
+        state.tick();
     }
 
     private function tryMove(dX:Int, dY:Int):Void 
@@ -113,11 +129,12 @@ class Player extends NormalObject
                                {x: newPosX, y: newPosY},                                
                                0.1, 
                                { onComplete: function(tween:FlxTween) {
-                                   moving = false;
-                                   platform = newPlatform;
+                                    moving = false;
+                                    platform = newPlatform;
                                    
-                                   newPlatform.setObject(this);
-                                   newPlatform.onMove(dX, dY);
+                                    newPlatform.setObject(this);
+                                    newPlatform.onMove(dX, dY);
+                                    state.tick();
                                }});
             }
         }

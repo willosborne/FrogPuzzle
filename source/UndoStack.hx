@@ -4,8 +4,9 @@ import haxe.ds.GenericStack;
 
 import base.PlatformObject;
 import base.NormalObject;
+import base.FloatingObject;
 
-typedef Grid = Array<Array<PlatformObject>>;
+typedef Grid<T> = Array<Array<T>>;
 
 typedef PlatformState = { 
     x:Int, 
@@ -18,8 +19,17 @@ typedef ObjectState = {
     type:Class<NormalObject>,
     facing:Int
 }
+typedef FloaterState = { 
+    x:Int, 
+    y:Int, 
+    type:Class<FloatingObject>,
+    facing:Int
+}
 
-typedef Snapshot = Array<PlatformState>;
+typedef Snapshot = {
+    platforms:Array<PlatformState>,
+    floaters:Array<FloaterState>
+}
 
 class UndoStack
 {
@@ -51,7 +61,7 @@ class UndoStack
 
     private function saveState() : Snapshot
     {
-        var arr:Array<PlatformState> = [];
+        var platformArr:Array<PlatformState> = [];
 
         state.platforms.forEachAlive(function(platform)
         // for (platform in state.platforms)
@@ -75,16 +85,35 @@ class UndoStack
                 facing: platform.facing
             };
 
-            arr.push(platState);
+            platformArr.push(platState);
         });
-        return arr;
+
+        var floaterArr:Array<FloaterState> = [];
+
+        state.floaters.forEachAlive(function(floater)
+        // for (platform in state.platforms)
+        {
+
+            var flState:FloaterState = {
+                x: floater.gridX,
+                y: floater.gridY,
+                type: Type.getClass(floater),
+                facing: floater.facing
+            };
+
+            floaterArr.push(flState);
+        });
+        return {
+            platforms: platformArr,
+            floaters: floaterArr
+        };
     }
 
-    private function restoreState(snapshot: Array<PlatformState>)
+    private function restoreState(snapshot: Snapshot)
     {
         state.deleteAll();
 
-        for (platState in snapshot) 
+        for (platState in snapshot.platforms) 
         {
             var plat:PlatformObject = Type.createInstance(platState.type, [state, platState.x, platState.y]);
             plat.facing = platState.facing;
@@ -100,6 +129,16 @@ class UndoStack
                 state.objects.add(obj);
             }
             state.setPlatform(platState.x, platState.y, plat);
+        }
+
+        //TODO: check that restoring floaters works
+        for (flState in snapshot.floaters) 
+        {
+            var fl:FloatingObject = Type.createInstance(flState.type, [state, flState.x, flState.y]);
+            fl.facing = flState.facing;
+            state.floaters.add(fl);
+
+            state.setFloater(flState.x, flState.y, fl);
         }
     }
 }
