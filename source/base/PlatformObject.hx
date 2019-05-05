@@ -15,6 +15,9 @@ class PlatformObject extends FlxSprite
     public var hasObjectInternal:Bool;
     var object:NormalObject = null;
 
+
+    public var faceDir:FaceDirection;
+
     public function new(state:PlayState, gridX:Int=0, gridY:Int=0, ?rotates:Bool=false) 
     {
         this.state = state;
@@ -85,5 +88,10 @@ class PlatformObject extends FlxSprite
     public function onMove(dX:Int, dY:Int):Void 
     {
 
+    }
+    
+    public function setFaceDir(dir:FaceDirection)
+    {
+        faceDir = dir;
     }
 }

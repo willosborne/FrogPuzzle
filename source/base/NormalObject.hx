@@ -2,17 +2,6 @@ package base;
 
 import flixel.FlxSprite;
 
-import base.PlatformObject;
-
-
-enum FaceDirection 
-{
-    UP;
-    DOWN;
-    LEFT;
-    RIGHT;
-}
-
 @:keepSub class NormalObject extends FlxSprite 
 {
     public var rotates:Bool;
@@ -23,6 +12,8 @@ enum FaceDirection
     public var gridY:Int;
 
     public var platform:PlatformObject;
+
+    public var faceDir:FaceDirection;
 
     public function new(state:PlayState, gridX:Int, gridY:Int, ?rotates:Bool=false) 
     {
@@ -48,5 +39,10 @@ enum FaceDirection
     public function onBump()
     {
 
+    }
+
+    public function setFaceDir(dir:FaceDirection)
+    {
+        faceDir = dir;
     }
 }

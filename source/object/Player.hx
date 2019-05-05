@@ -10,6 +10,8 @@ import flixel.tweens.FlxTween;
 import base.NormalObject;
 import base.PlatformObject;
 
+import base.FaceDirection;
+
 class Player extends NormalObject
 {
     private var vibrateTimer:Int = 0;
@@ -19,8 +21,6 @@ class Player extends NormalObject
 
     private var moving:Bool = false;
 
-    public var faceDir:FaceDirection;
-    
     public function new(state:PlayState, gridX:Int, gridY:Int) 
     {
         super(state, gridX, gridY, true);
@@ -43,28 +43,22 @@ class Player extends NormalObject
         if (FlxG.keys.justPressed.LEFT) 
         {
             tryMove(-1, 0);
-            faceDir = LEFT;
-            animation.play("lr-idle", false);
-            flipX = true;
+            setFaceDir(LEFT);
         }
         else if (FlxG.keys.justPressed.RIGHT) 
         {
             tryMove(1, 0);
-            faceDir = RIGHT;
-            animation.play("lr-idle", false);
-            flipX = false;
+            setFaceDir(RIGHT);
         }
         else if (FlxG.keys.justPressed.UP) 
         {
             tryMove(0, -1);
-            animation.play("back-idle", false);
-            flipX = false;
+            setFaceDir(UP);
         }
         else if (FlxG.keys.justPressed.DOWN) 
         {
             tryMove(0, 1);
-            animation.play("front-idle", false);
-            flipX = false;
+            setFaceDir(DOWN);
         }
         else if (FlxG.keys.justPressed.SPACE) 
         {
@@ -94,11 +88,11 @@ class Player extends NormalObject
         state.tick();
     }
 
+    //TODO weird stuff when you try to move on a moving platform
     private function tryMove(dX:Int, dY:Int):Void 
     {
-        if (!ready()) return;
-
-        state.startTurn();
+        if (!ready()) 
+            return;
 
         var newX = gridX + dX;
         var newY = gridY + dY;
@@ -109,10 +103,12 @@ class Player extends NormalObject
             return;
         }
 
+
         var newPlatform = state.getPlatform(newX, newY);
 
         if (newPlatform != null)
         {
+            state.startTurn();
             if (newPlatform.hasObject()) 
             {
                 var obj:NormalObject = newPlatform.getObject();
@@ -172,5 +168,28 @@ class Player extends NormalObject
     override public function takeTurn():Void
     {
 
+    }
+
+    override public function setFaceDir(dir:FaceDirection)
+    {
+        switch(dir)
+        {
+            case UP:
+                animation.play("back-idle", false);
+                flipX = false;
+            case DOWN:
+                animation.play("front-idle", false);
+                flipX = false;
+
+            case LEFT:
+                animation.play("lr-idle", false);
+                flipX = true;
+
+            case RIGHT:
+                animation.play("lr-idle", false);
+                flipX = false;
+        }
+
+        super.setFaceDir(dir);
     }
 }

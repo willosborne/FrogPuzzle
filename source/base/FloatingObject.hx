@@ -10,6 +10,8 @@ import flixel.FlxSprite;
 
     public var gridX:Int;
     public var gridY:Int;
+    
+    public var faceDir:FaceDirection;
 
     public function new(state:PlayState, gridX:Int, gridY:Int, ?rotates:Bool=false) 
     {
@@ -38,5 +40,10 @@ import flixel.FlxSprite;
     **/
     public function onHover(obj:NormalObject)
     {
+    }
+    
+    public function setFaceDir(dir:FaceDirection)
+    {
+        faceDir = dir;
     }
 }

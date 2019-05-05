@@ -5,6 +5,7 @@ import haxe.ds.GenericStack;
 import base.PlatformObject;
 import base.NormalObject;
 import base.FloatingObject;
+import base.FaceDirection;
 
 typedef Grid<T> = Array<Array<T>>;
 
@@ -13,17 +14,17 @@ typedef PlatformState = {
     y:Int, 
     object:ObjectState, 
     type:Class<PlatformObject>, 
-    facing:Int
+    faceDir:FaceDirection
 }
 typedef ObjectState = { 
     type:Class<NormalObject>,
-    facing:Int
+    faceDir:FaceDirection
 }
 typedef FloaterState = { 
     x:Int, 
     y:Int, 
     type:Class<FloatingObject>,
-    facing:Int
+    faceDir:FaceDirection
 }
 
 typedef Snapshot = {
@@ -46,7 +47,6 @@ class UndoStack
     public function pushState() 
     {
         var snap:Snapshot = saveState();
-        // trace(snap);
         stack.add(snap);
     }
 
@@ -87,7 +87,7 @@ class UndoStack
 
                 objState = {
                     type: Type.getClass(obj),
-                    facing: obj.facing
+                    faceDir: obj.faceDir
                 };
             }
 
@@ -96,7 +96,7 @@ class UndoStack
                 y: platform.gridY,
                 type: Type.getClass(platform),
                 object: objState,
-                facing: platform.facing
+                faceDir: platform.faceDir
             };
 
             platformArr.push(platState);
@@ -112,7 +112,7 @@ class UndoStack
                 x: floater.gridX,
                 y: floater.gridY,
                 type: Type.getClass(floater),
-                facing: floater.facing
+                faceDir: floater.faceDir
             };
 
             floaterArr.push(flState);
@@ -131,14 +131,14 @@ class UndoStack
         for (platState in snapshot.platforms) 
         {
             var plat:PlatformObject = Type.createInstance(platState.type, [state, platState.x, platState.y]);
-            plat.facing = platState.facing;
+            plat.setFaceDir(platState.faceDir);
             state.platforms.add(plat);
 
             if (platState.object != null)
             {
                 var obj:NormalObject = Type.createInstance(platState.object.type, 
                                                            [state, platState.x, platState.y]);
-                obj.facing = platState.object.facing;
+                obj.setFaceDir(platState.object.faceDir);
                 plat.setObject(obj);
                 obj.platform = plat;
                 state.objects.add(obj);
@@ -149,7 +149,7 @@ class UndoStack
         for (flState in snapshot.floaters) 
         {
             var fl:FloatingObject = Type.createInstance(flState.type, [state, flState.x, flState.y]);
-            fl.facing = flState.facing;
+            fl.setFaceDir(flState.faceDir);
             state.floaters.add(fl);
 
             state.setFloater(flState.x, flState.y, fl);
