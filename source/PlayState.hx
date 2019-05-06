@@ -9,6 +9,7 @@ import flixel.group.FlxGroup;
 import base.PlatformObject;
 import base.NormalObject;
 import base.FloatingObject;
+import base.PushableObject;
 
 import object.SolidGround;
 import object.Tree;

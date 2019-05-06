@@ -54,7 +54,6 @@ class UndoStack
     {
         if (!stack.isEmpty()) 
         {
-            trace("Undo!");
             var snap:Snapshot = stack.pop();
             restoreState(snap);
         }

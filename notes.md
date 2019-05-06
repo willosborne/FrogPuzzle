@@ -7,6 +7,12 @@
 - Logs
 - Sinking lilypads
 
+## To do
+- Undo bug
+  - Multiple frogs
+  - Can get stuck after an undo
+  - Seems to only happen on levels after the first one
+
 ## Core ideas
 - Frog jumps around from one square to another
 - Entire screen is pond, with small islands dotted around

@@ -36,9 +36,14 @@ import flixel.FlxSprite;
 
     }
 
-    public function onBump()
+    /***
+    Called when player tries to move into this object.
+    Returns a BumpAction so player knows what to do next.
+    By default, blocks player movement.
+    **/
+    public function onBump() : BumpAction
     {
-
+        return BLOCK;
     }
 
     public function setFaceDir(dir:FaceDirection)

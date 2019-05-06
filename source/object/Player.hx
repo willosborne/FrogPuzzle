@@ -40,29 +40,32 @@ class Player extends NormalObject
     {
         super.update(elapsed);
 
-        if (FlxG.keys.justPressed.LEFT) 
+        if (ready())
         {
-            tryMove(-1, 0);
-            setFaceDir(LEFT);
-        }
-        else if (FlxG.keys.justPressed.RIGHT) 
-        {
-            tryMove(1, 0);
-            setFaceDir(RIGHT);
-        }
-        else if (FlxG.keys.justPressed.UP) 
-        {
-            tryMove(0, -1);
-            setFaceDir(UP);
-        }
-        else if (FlxG.keys.justPressed.DOWN) 
-        {
-            tryMove(0, 1);
-            setFaceDir(DOWN);
-        }
-        else if (FlxG.keys.justPressed.SPACE) 
-        {
-            wait();
+            if (FlxG.keys.justPressed.LEFT) 
+            {
+                tryMove(-1, 0);
+                setFaceDir(LEFT);
+            }
+            else if (FlxG.keys.justPressed.RIGHT) 
+            {
+                tryMove(1, 0);
+                setFaceDir(RIGHT);
+            }
+            else if (FlxG.keys.justPressed.UP) 
+            {
+                tryMove(0, -1);
+                setFaceDir(UP);
+            }
+            else if (FlxG.keys.justPressed.DOWN) 
+            {
+                tryMove(0, 1);
+                setFaceDir(DOWN);
+            }
+            else if (FlxG.keys.justPressed.SPACE) 
+            {
+                wait();
+            }
         }
 
         if (vibrateTimer > 0) 
@@ -108,42 +111,42 @@ class Player extends NormalObject
 
         if (newPlatform != null)
         {
-            state.startTurn();
             if (newPlatform.hasObject()) 
             {
+                state.startTurn();
+
                 var obj:NormalObject = newPlatform.getObject();
-                if (obj != null)
-                    obj.onBump();
+                if (obj == null)
+                    throw "Platform hasObject(), but getObject() returned null. Something wrong here.";
+                var bumpAction = obj.onBump();
+
+                // NB object has already performed its bump action by now
+                // TODO make object slide if:
+                //  - On a lilypad
+                //  - Not KILL or DESTROY
+
                 // interact with object on platform
-                vibrate(4);
+                switch bumpAction {
+                    case BLOCK:
+                        vibrate(4);
+                    case KILL:
+                        // kill player
+                        trace("You died!");
+                        kill();
+                    case PUSH:
+                        // push object
+                    case DESTROY:
+                        // destroy object and move to its tile
+                        obj.kill();
+                        newPlatform.removeObject();
+                        moveTo(newX, newY);
+                }
             }
             else
             {
+                state.startTurn();
                 // move to new platform
-                moving = true;
-
-                gridX = newX;
-                gridY = newY;
-
-                var newPosX = Utils.gridToWorldCentreX(newX);
-                var newPosY = Utils.gridToWorldCentreY(newY);
-                // var newPosX = Utils.gridToWorldX(newX);
-                // var newPosY = Utils.gridToWorldY(newY);
-
-                // nb player has no platform mid jump
-                platform.removeObject();
-
-                FlxTween.tween(this, 
-                               {x: newPosX, y: newPosY},                                
-                               0.1, 
-                               { onComplete: function(tween:FlxTween) {
-                                    moving = false;
-                                    platform = newPlatform;
-                                   
-                                    newPlatform.setObject(this);
-                                    newPlatform.onMove(dX, dY);
-                                    state.tick();
-                               }});
+                moveTo(newX, newY);
             }
         }
         else
@@ -151,6 +154,39 @@ class Player extends NormalObject
             // do nothing
             vibrate(4);
         }
+    }
+
+    private function moveTo(newX:Int, newY:Int)
+    {
+        moving = true;
+
+        var dX = newX - gridX;
+        var dY = newY - gridY;
+
+        gridX = newX;
+        gridY = newY;
+        
+        var newPlatform = state.getPlatform(newX, newY);
+
+        var newPosX = Utils.gridToWorldCentreX(newX);
+        var newPosY = Utils.gridToWorldCentreY(newY);
+        // var newPosX = Utils.gridToWorldX(newX);
+        // var newPosY = Utils.gridToWorldY(newY);
+
+        // nb player has no platform mid jump
+        platform.removeObject();
+
+        FlxTween.tween(this, 
+                        {x: newPosX, y: newPosY},                                
+                        0.1, 
+                        { onComplete: function(tween:FlxTween) {
+                            moving = false;
+                            platform = newPlatform;
+                            
+                            newPlatform.setObject(this);
+                            newPlatform.onMove(dX, dY);
+                            state.tick();
+                        }});
     }
 
     private function vibrate(duration:Int):Void
