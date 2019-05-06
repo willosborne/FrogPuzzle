@@ -45,6 +45,10 @@ class PlayState extends FlxState
 
 	override public function create():Void
 	{
+		platforms = new FlxTypedGroup<PlatformObject>();
+		objects = new FlxTypedGroup<NormalObject>();
+		floaters = new FlxTypedGroup<FloatingObject>();
+
 		levelManager = new LevelManager(this);
 		
 		// add(new FlxText(10, 10, 100, "Hello world!"));
@@ -56,6 +60,9 @@ class PlayState extends FlxState
 
 	public function loadLevel(path:Dynamic)
 	{
+		// deleteAll();
+		this.clear();
+		turnRunning = false;
 		var level:LevelLoader = new LevelLoader(path, this);
 
 		platforms = level.platforms;
@@ -77,9 +84,9 @@ class PlayState extends FlxState
 		platformGrid = level.platformGrid;
 		floaterGrid = level.floaterGrid;
 		
-		undoStack = new UndoStack(this);
-
 		flies = 0;
+		
+		undoStack = new UndoStack(this);
 	}
 
 	public function win() {

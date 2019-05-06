@@ -38,10 +38,13 @@ class UndoStack
     private var stack:GenericStack<Snapshot>;
     private var state:PlayState;
 
+    private var startSnapshot:Snapshot;
+
     public function new(state:PlayState)
     {
         this.state = state;
         stack = new GenericStack<Snapshot>();
+        startSnapshot = saveState();
     }
 
     public function pushState() 
@@ -57,19 +60,26 @@ class UndoStack
             var snap:Snapshot = stack.pop();
             restoreState(snap);
         }
+        else
+        {
+            restoreState(startSnapshot);
+        }
     }
 
     public function resetState()
     {
-        if (!stack.isEmpty())
-        {
-            var item;
-            do 
-                item = stack.pop()
-            while (stack.head != null);
+        while (!stack.isEmpty())
+            stack.pop();
+        restoreState(startSnapshot);
+        // if (!stack.isEmpty())
+        // {
+        //     var item;
+        //     do 
+        //         item = stack.pop()
+        //     while (stack.head != null);
             
-            restoreState(item);
-        }
+        //     restoreState(item);
+        // }
     }
 
     private function saveState() : Snapshot
