@@ -6,17 +6,18 @@ import base.PlatformObject;
 
 class Tree extends PlatformObject
 {
+    //TODO depth sorting 
     public function new(state:PlayState, gridX:Int, gridY:Int) 
     {
-        super(state, gridX, gridY, rotates);
-        
-        makeGraphic(Utils.tileWidth, Utils.tileHeight, FlxColor.BROWN);
-        // centerOrigin();
-    }
+        super(state, gridX, gridY);
 
-    override public function hasObject()
-    {
-        // cannot remove object; always blocked
-        return true;
+        var obj = new TreeObject(state, gridX, gridY);
+        
+        // loadGraphic("assets/images/tree-sheet.png", false, 24, 48);
+        
+        // offset.set(0, 24);
+
+        this.setObject(obj);
+        state.addObject(obj);
     }
 }

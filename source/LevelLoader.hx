@@ -258,7 +258,6 @@ class LevelLoader extends TiledMap
             {
                 if (!plat.hasObject())
                 {
-                    trace ("Set platform object");
                     plat.setObject(obj);
                     obj.platform = plat;
                 }
@@ -292,11 +291,14 @@ class LevelLoader extends TiledMap
 
         // trace('Type to create: object.$objName');
         // trace('Grid position: ($gridX, $gridY)');
+        var c = Type.resolveClass("object." + objName);
 
-        var obj:PlatformObject = Type.createInstance(Type.resolveClass("object." + objName),
-                                    [state, gridX, gridY]);
-
-        return obj;
+        var obj:FlxSprite = Type.createInstance(c, [state, gridX, gridY]);
+        if (!Std.is(obj, PlatformObject))
+        {
+            throw 'Tried to place $objName on platforms layer';
+        }
+        return cast(obj, PlatformObject);
     }
 
 
@@ -312,11 +314,15 @@ class LevelLoader extends TiledMap
         
         // trace('Type to create: object.$objName');
         // trace('Grid position: ($gridX, $gridY)');
+        var c = Type.resolveClass("object." + objName);
 
-        var obj:NormalObject = Type.createInstance(Type.resolveClass("object." + objName),
-                                    [state, gridX, gridY]);
+        var obj:FlxSprite = Type.createInstance(c, [state, gridX, gridY]);
+        if (!Std.is(obj, NormalObject))
+        {
+            throw 'Tried to place $objName on objects layer';
+        }
 
-        return obj;
+        return cast(obj, NormalObject);
     }
 
     function createFloater(o:TiledObject) : FloatingObject
@@ -331,10 +337,14 @@ class LevelLoader extends TiledMap
         
         // trace('Type to create: object.$objName');
         // trace('Grid position: ($gridX, $gridY)');
+        var c = Type.resolveClass("object." + objName);
 
-        var obj:FloatingObject = Type.createInstance(Type.resolveClass("object." + objName),
-                                    [state, gridX, gridY]);
+        var obj:FlxSprite = Type.createInstance(c, [state, gridX, gridY]);
+        if (!Std.is(obj, FloatingObject))
+        {
+            throw 'Tried to place $objName on floaters layer';
+        }
 
-        return obj;
+        return cast(obj, FloatingObject);
     }
 }

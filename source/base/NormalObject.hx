@@ -41,7 +41,7 @@ import flixel.FlxSprite;
     Returns a BumpAction so player knows what to do next.
     By default, blocks player movement.
     **/
-    public function onBump() : BumpAction
+    public function onBump(?dX:Int=0, ?dY:Int=0) : BumpAction
     {
         return BLOCK;
     }

@@ -5,18 +5,24 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup;
+import flixel.util.FlxSort;
 
 import base.PlatformObject;
 import base.NormalObject;
 import base.FloatingObject;
 import base.PushableObject;
 
+// all of these need to be imported, or the optimiser deletes the classes
+// even when i specifically set the @keep attribute. Cool
 import object.SolidGround;
 import object.Tree;
 import object.Player;
 import object.LilyPad;
 import object.Goal;
 import object.Fly;
+import object.Block;
+import object.BlockSunk;
+import object.Tomato;
 
 import UndoStack;
 
@@ -34,6 +40,8 @@ class PlayState extends FlxState
 	public var objects:FlxTypedGroup<NormalObject>;
 	public var floaters:FlxTypedGroup<FloatingObject>;
 
+	// private var renderGroup:FlxTypedGroup<FlxSprite>;
+
 	public var turnRunning:Bool = false;
 
 	public var levelManager:LevelManager;
@@ -48,12 +56,17 @@ class PlayState extends FlxState
 		platforms = new FlxTypedGroup<PlatformObject>();
 		objects = new FlxTypedGroup<NormalObject>();
 		floaters = new FlxTypedGroup<FloatingObject>();
+		// renderGroup = new FlxTypedGroup<FlxSprite>();
 
 		levelManager = new LevelManager(this);
 		
 		// add(new FlxText(10, 10, 100, "Hello world!"));
 
 		FlxG.mouse.visible = false;
+
+		FlxG.console.registerFunction("loadLevel", function(level:Int) {
+			levelManager.loadLevel(level);
+		});
 
 		super.create();
 	}
@@ -65,6 +78,10 @@ class PlayState extends FlxState
 		turnRunning = false;
 		var level:LevelLoader = new LevelLoader(path, this);
 
+		trace('Loading level ${level.name}');
+
+		// renderGroup.clear();
+
 		platforms = level.platforms;
 		objects = level.objects;
 		floaters = level.floaters;
@@ -73,6 +90,8 @@ class PlayState extends FlxState
 		levelNameText = new FlxText(10, 10, 100, level.name);
 
 		add(level.bgTilemaps);
+
+		// add(renderGroup)
 
 		add(level.platforms);
 		add(level.objects);
@@ -110,7 +129,10 @@ class PlayState extends FlxState
 		if (FlxG.keys.justPressed.R)
 		{
 			// if (!turnRunning)
-			undoStack.resetState();
+			if (FlxG.keys.pressed.SHIFT)
+				levelManager.reloadLevel();
+			else
+				undoStack.resetState();
 		}
 
 		if (FlxG.keys.justPressed.W)
@@ -123,6 +145,8 @@ class PlayState extends FlxState
         }
 
 		flyCounter.text = 'Flies: $flies';
+
+		objects.sort(FlxSort.byY, FlxSort.ASCENDING);
 
 		super.update(elapsed);
 	}

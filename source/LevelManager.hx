@@ -3,6 +3,7 @@ package;
 class LevelManager
 {
     var levels:Array<String> = [
+        "assets/data/map-test.tmx",
 		"assets/data/map-1.tmx",
 		"assets/data/map-2.tmx",
 		"assets/data/map-3.tmx"
@@ -21,15 +22,20 @@ class LevelManager
 
     public function loadLevel(newLevel:Int)
     {
-        if (newLevel < levels.length)
+        if (newLevel >= 0 && newLevel < levels.length)
         {
             currentLevel = newLevel;
             state.loadLevel(levels[currentLevel]);
         }
         else
         {
-            throw 'Invalid level index $newLevel';
+            trace('Invalid level index $newLevel');
         }
+    }
+
+    public function reloadLevel()
+    {
+        state.loadLevel(levels[currentLevel]);
     }
 
     public function nextLevel() 

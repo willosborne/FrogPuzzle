@@ -118,7 +118,7 @@ class Player extends NormalObject
                 var obj:NormalObject = newPlatform.getObject();
                 if (obj == null)
                     throw "Platform hasObject(), but getObject() returned null. Something wrong here.";
-                var bumpAction = obj.onBump();
+                var bumpAction = obj.onBump(dX, dY);
 
                 // NB object has already performed its bump action by now
                 // TODO make object slide if:
@@ -135,6 +135,7 @@ class Player extends NormalObject
                         kill();
                     case PUSH:
                         // push object
+                        moveTo(newX, newY);
                     case DESTROY:
                         // destroy object and move to its tile
                         obj.kill();
