@@ -11,13 +11,21 @@ class Tree extends PlatformObject
     {
         super(state, gridX, gridY);
 
-        var obj = new TreeObject(state, gridX, gridY);
         
         // loadGraphic("assets/images/tree-sheet.png", false, 24, 48);
         
         // offset.set(0, 24);
+        set_visible(false);
 
+    }
+
+    override public function create() : Void 
+    {
+        var obj = new TreeObject(state, gridX, gridY);
         this.setObject(obj);
         state.addObject(obj);
+        super.create();
     }
+
+    
 }

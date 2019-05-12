@@ -3,6 +3,7 @@ package object;
 import flixel.util.FlxColor;
 
 import base.PlatformObject;
+import base.MoveAction;
 
 class BlockSunk extends PlatformObject
 {
@@ -20,8 +21,9 @@ class BlockSunk extends PlatformObject
         // centerOrigin();
     }
 
-    override public function onMove(dX:Int, dY:Int) : Void
+    override public function onMove(dX:Int, dY:Int) : MoveAction
     {
         state.endTurn();
+        return NOTHING;
     }
 }

@@ -33,6 +33,11 @@ class PlatformObject extends FlxSprite
         super(cX, cY);
     }
 
+    public function create() : Void 
+    {
+
+    }
+
     override public function update(elapsed:Float)
     {
         super.update(elapsed);
@@ -85,9 +90,9 @@ class PlatformObject extends FlxSprite
 
     }
 
-    public function onMove(dX:Int, dY:Int):Void 
+    public function onMove(dX:Int, dY:Int):MoveAction
     {
-
+        return NOTHING;
     }
     
     public function setFaceDir(dir:FaceDirection)

@@ -3,6 +3,7 @@ package object;
 import flixel.util.FlxColor;
 
 import base.PlatformObject;
+import base.MoveAction;
 
 class SolidGround extends PlatformObject
 {
@@ -16,8 +17,9 @@ class SolidGround extends PlatformObject
         // centerOrigin();
     }
 
-    override public function onMove(dX:Int, dY:Int) : Void
+    override public function onMove(dX:Int, dY:Int) : MoveAction
     {
         state.endTurn();
+        return NOTHING;
     }
 }

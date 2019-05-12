@@ -6,7 +6,7 @@ import base.NormalObject;
 import base.BumpAction;
 
 /**
-Invisible object that blocks movement and cannot be affected by anything.
+The bit on top of a tree that actually blocks stuff. Also draws the tree itself
 **/
 class TreeObject extends NormalObject 
 {

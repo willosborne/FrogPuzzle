@@ -85,6 +85,10 @@ class PlayState extends FlxState
 		platforms = level.platforms;
 		objects = level.objects;
 		floaters = level.floaters;
+
+		platforms.forEach(function (plat) {
+			plat.create();
+		});
 		
 		flyCounter = new FlxText(10,24, 100, "Flies: 0");
 		levelNameText = new FlxText(10, 10, 100, level.name);

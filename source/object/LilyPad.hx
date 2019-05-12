@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.util.FlxColor;
 
 import base.PlatformObject;
+import base.MoveAction;
 
 class LilyPad extends PlatformObject
 {
@@ -73,13 +74,15 @@ class LilyPad extends PlatformObject
 
     }
 
-    override public function onMove(dX:Int, dY:Int) : Void 
+    override public function onMove(dX:Int, dY:Int) : MoveAction
     {
         if (state.platformCellFree(gridX + dX, gridY + dY))
         {
             // slide!
             slide(dX, dY);
+            return SLIDE;
         }
+        return NOTHING;
     }
 
     public function slide(dX:Int, dY:Int) : Void

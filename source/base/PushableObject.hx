@@ -29,8 +29,17 @@ import flixel.tweens.FlxTween;
         var plat:PlatformObject = state.getPlatform(newX, newY);
         // if it has nowhere to go, run onSplash and return its result
         // this lets objects fall into the water, and other shenanigans
-        if (plat == null)
-            return onSplash(newX, newY);
+        if (plat == null) 
+        {
+            var moveAction = platform.onMove(dX, dY);
+            switch (moveAction)
+            {
+                case NOTHING:
+                    return onSplash(newX, newY);
+                case SLIDE:
+                    return BLOCK;
+            }
+        }
         
         // if there is a platform, does it have an object?
         if (plat.hasObject())
