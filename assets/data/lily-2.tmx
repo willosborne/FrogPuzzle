@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="60">
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="7" nextobjectid="60">
  <properties>
-  <property name="Name" value="Level One"/>
+  <property name="Name" value="Lily Pads Two"/>
  </properties>
  <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
   <image source="../images/tileset-pond.png" width="256" height="256"/>
+  <terraintypes>
+   <terrain name="rock" tile="0"/>
+   <terrain name="water" tile="0"/>
+  </terraintypes>
+  <tile id="14" terrain="1,1,1,0"/>
+  <tile id="15" terrain="1,1,0,0"/>
+  <tile id="16" terrain="1,1,0,1"/>
+  <tile id="17" terrain="0,0,0,1"/>
+  <tile id="18" terrain="0,0,1,0"/>
+  <tile id="19" terrain="1,1,1,1"/>
+  <tile id="24" terrain="1,0,1,0"/>
+  <tile id="25" terrain="0,0,0,0"/>
+  <tile id="26" terrain="0,1,0,1"/>
+  <tile id="27" terrain="0,1,0,0"/>
+  <tile id="28" terrain="1,0,0,0"/>
+  <tile id="34" terrain="1,0,1,1"/>
+  <tile id="35" terrain="0,0,1,1"/>
+  <tile id="36" terrain="0,1,1,1"/>
  </tileset>
  <layer id="1" name="bgTiles" width="10" height="10">
   <properties>
@@ -21,6 +39,20 @@
 3,2,2,2,2,2,6,2,2,2,
 2,5,6,2,2,2,3,2,6,2,
 2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <layer id="6" name="test layer" width="10" height="10" visible="0">
+  <data encoding="csv">
+20,20,20,20,20,20,20,20,20,20,
+20,20,15,16,16,16,16,17,20,20,
+20,20,25,26,26,26,26,27,20,20,
+20,20,35,36,36,19,26,27,20,20,
+20,20,20,20,20,25,26,27,20,20,
+20,20,20,15,16,29,26,27,20,20,
+20,15,16,29,26,18,36,37,20,20,
+20,25,26,18,36,37,20,20,20,20,
+20,35,36,37,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20
 </data>
  </layer>
  <objectgroup id="2" name="platforms">

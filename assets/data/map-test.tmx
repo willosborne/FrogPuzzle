@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="7" nextobjectid="133">
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="7" nextobjectid="146">
  <properties>
-  <property name="Name" value="Level One"/>
+  <property name="Name" value="Sandbox"/>
  </properties>
  <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
   <image source="../images/tileset-pond.png" width="256" height="256"/>
@@ -29,16 +29,16 @@
    <property name="tileset" value="tileset-pond"/>
   </properties>
   <data encoding="csv">
-2,2,2,2,2,2,2,2,2,2,
+2,2,6,6,6,2,2,2,2,2,
 2,6,6,6,6,2,2,2,2,2,
-2,6,2,2,2,2,2,3,5,2,
+6,6,2,2,2,2,2,3,5,2,
 2,6,2,2,2,2,2,2,2,2,
 2,2,3,2,2,6,6,2,2,2,
 2,2,2,2,3,2,2,2,2,3,
-2,6,6,6,6,6,6,6,6,2,
-3,6,6,6,6,6,6,6,6,2,
-2,6,6,6,5,2,6,6,6,2,
-2,6,6,6,6,6,6,6,6,2
+2,6,6,6,6,6,6,6,6,6,
+3,6,6,6,6,6,6,6,6,6,
+2,6,6,6,5,2,6,6,6,6,
+2,6,6,6,6,6,6,6,6,6
 </data>
  </layer>
  <objectgroup id="2" name="platforms">
@@ -89,15 +89,26 @@
   <object id="120" type="SolidGround" gid="10" x="24" y="48" width="24" height="24"/>
   <object id="121" type="SolidGround" gid="10" x="96" y="48" width="24" height="24"/>
   <object id="132" type="Tree" gid="22" x="120" y="216" width="24" height="24"/>
+  <object id="133" type="LilyPad" gid="7" x="120" y="96" width="24" height="24"/>
+  <object id="134" type="LilyPad" gid="7" x="0" y="96" width="24" height="24"/>
+  <object id="135" type="LilyPad" gid="7" x="0" y="48" width="24" height="24"/>
+  <object id="136" type="SolidGround" gid="10" x="0" y="72" width="24" height="24"/>
+  <object id="137" type="SolidGround" gid="10" x="216" y="168" width="24" height="24"/>
+  <object id="138" type="SolidGround" gid="10" x="216" y="192" width="24" height="24"/>
+  <object id="139" type="SolidGround" gid="10" x="216" y="216" width="24" height="24"/>
+  <object id="141" type="SolidGround" gid="10" x="216" y="240" width="24" height="24"/>
+  <object id="142" type="SolidGround" gid="10" x="96" y="24" width="24" height="24"/>
+  <object id="144" type="SolidGround" gid="10" x="72" y="24" width="24" height="24"/>
+  <object id="145" type="SolidGround" gid="10" x="48" y="24" width="24" height="24"/>
  </objectgroup>
  <objectgroup id="3" name="objects">
   <object id="6" name="Player" type="Player" gid="9" x="24" y="216" width="24" height="24"/>
   <object id="126" type="Tomato" gid="23" x="72" y="192" width="24" height="24"/>
   <object id="127" type="Tomato" gid="23" x="120" y="192" width="24" height="24"/>
   <object id="128" type="Tomato" gid="23" x="168" y="192" width="24" height="24"/>
-  <object id="129" type="Block" gid="13" x="96" y="168" width="24" height="24"/>
-  <object id="130" type="Block" gid="13" x="96" y="192" width="24" height="24"/>
-  <object id="131" type="Block" gid="13" x="96" y="216" width="24" height="24"/>
+  <object id="129" type="Block" gid="33" x="96" y="168" width="24" height="24"/>
+  <object id="130" type="Block" gid="33" x="96" y="192" width="24" height="24"/>
+  <object id="131" type="Block" gid="33" x="96" y="216" width="24" height="24"/>
  </objectgroup>
  <objectgroup id="4" name="floaters">
   <object id="106" type="Fly" gid="12" x="192" y="168" width="24" height="24"/>

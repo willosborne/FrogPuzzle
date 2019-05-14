@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="68">
+ <properties>
+  <property name="Name" value="Lily Pads Three"/>
+ </properties>
+ <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
+  <image source="../images/tileset-pond.png" width="256" height="256"/>
+  <terraintypes>
+   <terrain name="rock" tile="0"/>
+   <terrain name="water" tile="0"/>
+  </terraintypes>
+  <tile id="14" terrain="1,1,1,0"/>
+  <tile id="15" terrain="1,1,0,0"/>
+  <tile id="16" terrain="1,1,0,1"/>
+  <tile id="17" terrain="0,0,0,1"/>
+  <tile id="18" terrain="0,0,1,0"/>
+  <tile id="19" terrain="1,1,1,1"/>
+  <tile id="24" terrain="1,0,1,0"/>
+  <tile id="25" terrain="0,0,0,0"/>
+  <tile id="26" terrain="0,1,0,1"/>
+  <tile id="27" terrain="0,1,0,0"/>
+  <tile id="28" terrain="1,0,0,0"/>
+  <tile id="34" terrain="1,0,1,1"/>
+  <tile id="35" terrain="0,0,1,1"/>
+  <tile id="36" terrain="0,1,1,1"/>
+ </tileset>
+ <layer id="1" name="bgTiles" width="10" height="10">
+  <properties>
+   <property name="tileset" value="tileset-pond"/>
+  </properties>
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,
+2,3,2,2,6,6,6,6,2,2,
+2,2,2,2,2,2,2,3,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,6,2,2,2,2,2,2,3,2,
+2,3,2,2,2,2,2,2,2,2,
+2,2,2,2,3,2,2,2,2,6,
+2,2,2,6,2,2,2,6,2,2,
+2,2,2,6,6,6,6,6,2,2,
+2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="platforms">
+  <object id="44" type="LilyPad" gid="7" x="48" y="120" width="24" height="24"/>
+  <object id="46" type="Tree" gid="22" x="120" y="120" width="24" height="24"/>
+  <object id="47" type="LilyPad" gid="7" x="96" y="72" width="24" height="24"/>
+  <object id="48" type="LilyPad" gid="7" x="96" y="144" width="24" height="24"/>
+  <object id="49" type="LilyPad" gid="7" x="144" y="120" width="24" height="24"/>
+  <object id="50" type="SolidGround" gid="10" x="144" y="216" width="24" height="24"/>
+  <object id="51" type="SolidGround" gid="10" x="120" y="216" width="24" height="24"/>
+  <object id="52" type="SolidGround" gid="10" x="96" y="216" width="24" height="24"/>
+  <object id="53" type="SolidGround" gid="10" x="72" y="216" width="24" height="24"/>
+  <object id="54" type="SolidGround" gid="10" x="168" y="216" width="24" height="24"/>
+  <object id="57" type="SolidGround" gid="10" x="96" y="48" width="24" height="24"/>
+  <object id="58" type="SolidGround" gid="10" x="120" y="48" width="24" height="24"/>
+  <object id="59" type="SolidGround" gid="10" x="144" y="48" width="24" height="24"/>
+  <object id="60" type="SolidGround" gid="10" x="168" y="48" width="24" height="24"/>
+  <object id="61" type="SolidGround" gid="10" x="72" y="192" width="24" height="24"/>
+  <object id="62" type="SolidGround" gid="10" x="168" y="192" width="24" height="24"/>
+  <object id="64" type="SolidGround" gid="10" x="216" y="168" width="24" height="24"/>
+  <object id="66" type="LilyPad" gid="7" x="168" y="168" width="24" height="24"/>
+  <object id="67" type="SolidGround" gid="10" x="24" y="120" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="43" name="Player" type="Player" gid="9" x="24" y="120" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="floaters">
+  <object id="65" type="Goal" gid="11" x="216" y="168" width="24" height="24"/>
+ </objectgroup>
+</map>

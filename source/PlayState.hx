@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.text.FlxText;
 import flixel.group.FlxGroup;
 import flixel.util.FlxSort;
+import flixel.util.FlxColor;
 
 import base.PlatformObject;
 import base.NormalObject;
@@ -53,6 +54,7 @@ class PlayState extends FlxState
 
 	override public function create():Void
 	{
+		set_bgColor(0xFF639BFF);
 		platforms = new FlxTypedGroup<PlatformObject>();
 		objects = new FlxTypedGroup<NormalObject>();
 		floaters = new FlxTypedGroup<FloatingObject>();
@@ -101,7 +103,7 @@ class PlayState extends FlxState
 		add(level.objects);
 		add(level.floaters);
 
-		add(flyCounter);
+		// add(flyCounter);
 		add(levelNameText);
 
 		platformGrid = level.platformGrid;
@@ -148,12 +150,18 @@ class PlayState extends FlxState
             levelManager.nextLevel();
         }
 
-		flyCounter.text = 'Flies: $flies';
+		// flyCounter.text = 'Flies: $flies';
 
 		objects.sort(FlxSort.byY, FlxSort.ASCENDING);
 
 		super.update(elapsed);
 	}
+    
+	public function outOfBounds(x:Int, y:Int) : Bool
+    {
+        return x < 0 || x >= gridWidth ||
+               y < 0 || y >= gridHeight;
+    }
 
 	public function addPlatform(obj:PlatformObject):Void 
 	{

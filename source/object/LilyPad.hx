@@ -11,6 +11,7 @@ class LilyPad extends PlatformObject
 {
     var slideVelocity:Float = 100;
     public var sliding:Bool = false;
+    private var killSliding=false;
 
     var targetGridX:Int;
     var targetGridY:Int;
@@ -26,13 +27,26 @@ class LilyPad extends PlatformObject
 
     override public function update(elapsed:Float)
     {
+        if (x < -24 || y < -24
+            || x > Utils.gridToWorldX(state.gridWidth) + 24
+            || y > Utils.gridToWorldY(state.gridHeight) + 24)
+        {
+            if (hasObject()) 
+            {
+                object.kill();
+                removeObject();
+            }
+            kill();
+            return;
+        }            
 
         // call triggers for current cell if it's sliding
-        if (sliding) 
+        if (sliding && !killSliding) 
         {
             // call triggers, update cells
             var currentGridX = Utils.worldToGridX(x);
             var currentGridY = Utils.worldToGridY(y);
+
 
             if (currentGridX != gridX || currentGridY != gridY)
             {
@@ -85,24 +99,34 @@ class LilyPad extends PlatformObject
         return NOTHING;
     }
 
+
     public function slide(dX:Int, dY:Int) : Void
     {
         var newGridX = gridX + dX;
         var newGridY = gridY + dY;
 
-        // cast a ray until we hit an object
-        while (state.platformCellFree(newGridX + dX, newGridY + dY))
-        {
-            newGridX += dX;
-            newGridY += dY;
+        if (state.outOfBounds(newGridX, newGridY))
+            return;
 
-            if (newGridX < 0 || newGridX >= state.gridWidth
-                || newGridY < 0 || newGridY >= state.gridHeight)
-            {   
-                newGridX -= dX;
-                newGridY -= dY;
+        // cast a ray until we hit an object
+        while (true)
+        {
+            var newX = newGridX + dX;
+            var newY = newGridY + dY;
+
+            if (state.outOfBounds(newX, newY))
+            {
+                // if this will take us out of bounds, set killsliding
+                // killSliding will keep sliding until out of bounds, then kill lilypad+object
+                killSliding = true;
+                // trace('KILL');
                 break;
             }
+
+            if (!state.platformCellFree(newX, newY))
+                break;
+            newGridX = newX;
+            newGridY = newY;
         }
         // TODO: handle case where lilypad floats offscreen
 
@@ -114,6 +138,8 @@ class LilyPad extends PlatformObject
 
         targetGridX = newGridX;
         targetGridY = newGridY;
+
+        // trace('Target: ($targetGridX, $targetGridY)');
 
         // lastGridX = gridX;
         // lastGridY = gridY;

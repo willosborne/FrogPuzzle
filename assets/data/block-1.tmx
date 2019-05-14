@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="84">
+ <properties>
+  <property name="Name" value="Blocks One"/>
+ </properties>
+ <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
+  <image source="../images/tileset-pond.png" width="256" height="256"/>
+  <terraintypes>
+   <terrain name="rock" tile="0"/>
+   <terrain name="water" tile="0"/>
+  </terraintypes>
+  <tile id="14" terrain="1,1,1,0"/>
+  <tile id="15" terrain="1,1,0,0"/>
+  <tile id="16" terrain="1,1,0,1"/>
+  <tile id="17" terrain="0,0,0,1"/>
+  <tile id="18" terrain="0,0,1,0"/>
+  <tile id="19" terrain="1,1,1,1"/>
+  <tile id="24" terrain="1,0,1,0"/>
+  <tile id="25" terrain="0,0,0,0"/>
+  <tile id="26" terrain="0,1,0,1"/>
+  <tile id="27" terrain="0,1,0,0"/>
+  <tile id="28" terrain="1,0,0,0"/>
+  <tile id="34" terrain="1,0,1,1"/>
+  <tile id="35" terrain="0,0,1,1"/>
+  <tile id="36" terrain="0,1,1,1"/>
+ </tileset>
+ <layer id="1" name="bgTiles" width="10" height="10">
+  <properties>
+   <property name="tileset" value="tileset-pond"/>
+  </properties>
+  <data encoding="csv">
+2,2,2,2,6,6,6,6,2,2,
+2,3,2,2,6,6,6,6,2,3,
+2,2,6,2,2,2,2,6,2,2,
+2,2,6,6,6,2,2,6,3,2,
+2,6,6,6,6,2,2,2,2,2,
+2,3,2,6,6,2,2,2,2,2,
+2,2,2,2,3,6,2,6,2,2,
+2,2,2,2,6,6,6,6,2,2,
+2,2,2,2,2,2,2,2,3,2,
+2,2,3,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="platforms">
+  <object id="34" type="SolidGround" gid="10" x="24" y="120" width="24" height="24"/>
+  <object id="37" type="SolidGround" gid="10" x="48" y="120" width="24" height="24"/>
+  <object id="42" type="SolidGround" gid="10" x="72" y="96" width="24" height="24"/>
+  <object id="43" type="SolidGround" gid="10" x="72" y="120" width="24" height="24"/>
+  <object id="44" type="SolidGround" gid="10" x="72" y="144" width="24" height="24"/>
+  <object id="45" type="SolidGround" gid="10" x="96" y="144" width="24" height="24"/>
+  <object id="46" type="SolidGround" gid="10" x="96" y="120" width="24" height="24"/>
+  <object id="48" type="SolidGround" gid="10" x="96" y="96" width="24" height="24"/>
+  <object id="50" type="SolidGround" gid="10" x="96" y="192" width="24" height="24"/>
+  <object id="51" type="SolidGround" gid="10" x="144" y="192" width="24" height="24"/>
+  <object id="52" type="SolidGround" gid="10" x="120" y="192" width="24" height="24"/>
+  <object id="53" type="SolidGround" gid="10" x="168" y="192" width="24" height="24"/>
+  <object id="58" type="SolidGround" gid="10" x="168" y="96" width="24" height="24"/>
+  <object id="59" type="SolidGround" gid="10" x="168" y="72" width="24" height="24"/>
+  <object id="60" type="SolidGround" gid="10" x="168" y="48" width="24" height="24"/>
+  <object id="61" type="SolidGround" gid="10" x="144" y="48" width="24" height="24"/>
+  <object id="62" type="SolidGround" gid="10" x="120" y="48" width="24" height="24"/>
+  <object id="63" type="SolidGround" gid="10" x="96" y="48" width="24" height="24"/>
+  <object id="65" type="SolidGround" gid="10" x="120" y="168" width="24" height="24"/>
+  <object id="66" type="SolidGround" gid="10" x="168" y="168" width="24" height="24"/>
+  <object id="67" type="SolidGround" gid="10" x="144" y="24" width="24" height="24"/>
+  <object id="68" type="SolidGround" gid="10" x="168" y="24" width="24" height="24"/>
+  <object id="70" type="SolidGround" gid="10" x="120" y="24" width="24" height="24"/>
+  <object id="71" type="SolidGround" gid="10" x="96" y="24" width="24" height="24"/>
+  <object id="74" type="LilyPad" gid="7" x="72" y="72" width="24" height="24"/>
+  <object id="75" type="SolidGround" gid="10" x="48" y="96" width="24" height="24"/>
+  <object id="76" type="SolidGround" gid="10" x="48" y="72" width="24" height="24"/>
+  <object id="80" type="LilyPad" gid="7" x="168" y="120" width="24" height="24"/>
+  <object id="82" type="SolidGround" gid="10" x="216" y="144" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="36" name="Player" type="Player" gid="9" x="24" y="120" width="24" height="24"/>
+  <object id="73" type="Block" gid="33" x="120" y="48" width="24" height="24"/>
+  <object id="77" type="Block" gid="33" x="96" y="144" width="24" height="24"/>
+  <object id="78" type="Block" gid="33" x="96" y="120" width="24" height="24"/>
+  <object id="79" type="Block" gid="33" x="72" y="144" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="floaters">
+  <object id="83" type="Goal" gid="11" x="216" y="144" width="24" height="24"/>
+ </objectgroup>
+</map>

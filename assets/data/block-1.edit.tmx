@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="84">
+ <properties>
+  <property name="Name" value="Blocks One"/>
+ </properties>
+ <tileset firstgid="1" source="tileset-pond.tsx"/>
+ <layer id="1" name="bgTiles" width="10" height="10">
+  <properties>
+   <property name="tileset" value="tileset-pond"/>
+  </properties>
+  <data encoding="csv">
+2,2,2,2,6,6,6,6,2,2,
+2,3,2,2,6,6,6,6,2,3,
+2,2,6,2,2,2,2,6,2,2,
+2,2,6,6,6,2,2,6,3,2,
+2,6,6,6,6,2,2,2,2,2,
+2,3,2,6,6,2,2,2,2,2,
+2,2,2,2,3,6,2,6,2,2,
+2,2,2,2,6,6,6,6,2,2,
+2,2,2,2,2,2,2,2,3,2,
+2,2,3,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="platforms">
+  <object id="34" template="SolidGround.tx" x="24" y="120"/>
+  <object id="37" template="SolidGround.tx" x="48" y="120"/>
+  <object id="42" template="SolidGround.tx" x="72" y="96"/>
+  <object id="43" template="SolidGround.tx" x="72" y="120"/>
+  <object id="44" template="SolidGround.tx" x="72" y="144"/>
+  <object id="45" template="SolidGround.tx" x="96" y="144"/>
+  <object id="46" template="SolidGround.tx" x="96" y="120"/>
+  <object id="48" template="SolidGround.tx" x="96" y="96"/>
+  <object id="50" template="SolidGround.tx" x="96" y="192"/>
+  <object id="51" template="SolidGround.tx" x="144" y="192"/>
+  <object id="52" template="SolidGround.tx" x="120" y="192"/>
+  <object id="53" template="SolidGround.tx" x="168" y="192"/>
+  <object id="58" template="SolidGround.tx" x="168" y="96"/>
+  <object id="59" template="SolidGround.tx" x="168" y="72"/>
+  <object id="60" template="SolidGround.tx" x="168" y="48"/>
+  <object id="61" template="SolidGround.tx" x="144" y="48"/>
+  <object id="62" template="SolidGround.tx" x="120" y="48"/>
+  <object id="63" template="SolidGround.tx" x="96" y="48"/>
+  <object id="65" template="SolidGround.tx" x="120" y="168"/>
+  <object id="66" template="SolidGround.tx" x="168" y="168"/>
+  <object id="67" template="SolidGround.tx" x="144" y="24"/>
+  <object id="68" template="SolidGround.tx" x="168" y="24"/>
+  <object id="70" template="SolidGround.tx" x="120" y="24"/>
+  <object id="71" template="SolidGround.tx" x="96" y="24"/>
+  <object id="74" template="LilyPad.tx" x="72" y="72"/>
+  <object id="75" template="SolidGround.tx" x="48" y="96"/>
+  <object id="76" template="SolidGround.tx" x="48" y="72"/>
+  <object id="80" template="LilyPad.tx" x="168" y="120"/>
+  <object id="82" template="SolidGround.tx" x="216" y="144"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="36" template="Player.tx" x="24" y="120"/>
+  <object id="73" template="Block.tx" x="120" y="48"/>
+  <object id="77" template="Block.tx" x="96" y="144"/>
+  <object id="78" template="Block.tx" x="96" y="120"/>
+  <object id="79" template="Block.tx" x="72" y="144"/>
+ </objectgroup>
+ <objectgroup id="4" name="floaters">
+  <object id="83" template="Goal.tx" x="216" y="144"/>
+ </objectgroup>
+</map>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="5" nextobjectid="122">
+ <properties>
+  <property name="Name" value="You Won! More levels coming..."/>
+ </properties>
+ <tileset firstgid="1" name="tileset-pond" tilewidth="24" tileheight="24" tilecount="100" columns="10">
+  <image source="../images/tileset-pond.png" width="256" height="256"/>
+  <terraintypes>
+   <terrain name="rock" tile="0"/>
+   <terrain name="water" tile="0"/>
+  </terraintypes>
+  <tile id="14" terrain="1,1,1,0"/>
+  <tile id="15" terrain="1,1,0,0"/>
+  <tile id="16" terrain="1,1,0,1"/>
+  <tile id="17" terrain="0,0,0,1"/>
+  <tile id="18" terrain="0,0,1,0"/>
+  <tile id="19" terrain="1,1,1,1"/>
+  <tile id="24" terrain="1,0,1,0"/>
+  <tile id="25" terrain="0,0,0,0"/>
+  <tile id="26" terrain="0,1,0,1"/>
+  <tile id="27" terrain="0,1,0,0"/>
+  <tile id="28" terrain="1,0,0,0"/>
+  <tile id="34" terrain="1,0,1,1"/>
+  <tile id="35" terrain="0,0,1,1"/>
+  <tile id="36" terrain="0,1,1,1"/>
+ </tileset>
+ <layer id="1" name="bgTiles" width="10" height="10">
+  <properties>
+   <property name="tileset" value="tileset-pond"/>
+  </properties>
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,
+2,3,2,2,2,2,2,2,2,2,
+2,2,6,6,6,6,6,6,2,2,
+2,2,6,2,2,2,2,6,2,2,
+2,2,6,2,6,6,2,6,2,2,
+2,2,6,2,6,6,2,6,2,2,
+2,2,6,2,2,2,2,6,2,2,
+2,2,6,6,6,6,6,6,2,2,
+2,2,2,2,2,2,2,2,2,2,
+2,2,3,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="platforms">
+  <object id="81" type="SolidGround" gid="10" x="96" y="120" width="24" height="24"/>
+  <object id="82" type="SolidGround" gid="10" x="120" y="120" width="24" height="24"/>
+  <object id="83" type="SolidGround" gid="10" x="120" y="144" width="24" height="24"/>
+  <object id="85" type="SolidGround" gid="10" x="96" y="144" width="24" height="24"/>
+  <object id="86" type="SolidGround" gid="10" x="48" y="72" width="24" height="24"/>
+  <object id="87" type="SolidGround" gid="10" x="72" y="72" width="24" height="24"/>
+  <object id="88" type="SolidGround" gid="10" x="120" y="72" width="24" height="24"/>
+  <object id="89" type="SolidGround" gid="10" x="96" y="72" width="24" height="24"/>
+  <object id="90" type="SolidGround" gid="10" x="144" y="72" width="24" height="24"/>
+  <object id="91" type="SolidGround" gid="10" x="168" y="72" width="24" height="24"/>
+  <object id="92" type="SolidGround" gid="10" x="168" y="96" width="24" height="24"/>
+  <object id="93" type="SolidGround" gid="10" x="168" y="120" width="24" height="24"/>
+  <object id="94" type="SolidGround" gid="10" x="168" y="144" width="24" height="24"/>
+  <object id="95" type="SolidGround" gid="10" x="168" y="168" width="24" height="24"/>
+  <object id="96" type="SolidGround" gid="10" x="168" y="192" width="24" height="24"/>
+  <object id="97" type="SolidGround" gid="10" x="144" y="192" width="24" height="24"/>
+  <object id="98" type="SolidGround" gid="10" x="120" y="192" width="24" height="24"/>
+  <object id="99" type="SolidGround" gid="10" x="96" y="192" width="24" height="24"/>
+  <object id="100" type="SolidGround" gid="10" x="72" y="192" width="24" height="24"/>
+  <object id="101" type="SolidGround" gid="10" x="48" y="192" width="24" height="24"/>
+  <object id="102" type="SolidGround" gid="10" x="48" y="168" width="24" height="24"/>
+  <object id="103" type="SolidGround" gid="10" x="48" y="144" width="24" height="24"/>
+  <object id="104" type="SolidGround" gid="10" x="48" y="120" width="24" height="24"/>
+  <object id="105" type="SolidGround" gid="10" x="48" y="96" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="106" name="Player" type="Player" gid="9" x="96" y="120" width="24" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="floaters">
+  <object id="107" type="Goal" gid="11" x="48" y="72" width="24" height="24"/>
+  <object id="108" type="Goal" gid="11" x="168" y="72" width="24" height="24"/>
+  <object id="109" type="Goal" gid="11" x="168" y="192" width="24" height="24"/>
+  <object id="110" type="Goal" gid="11" x="48" y="192" width="24" height="24"/>
+  <object id="111" type="Fly" gid="12" x="120" y="144" width="24" height="24"/>
+  <object id="112" type="Fly" gid="12" x="96" y="144" width="24" height="24"/>
+  <object id="113" type="Fly" gid="12" x="120" y="120" width="24" height="24"/>
+  <object id="114" type="Fly" gid="12" x="96" y="72" width="24" height="24"/>
+  <object id="115" type="Fly" gid="12" x="120" y="72" width="24" height="24"/>
+  <object id="116" type="Fly" gid="12" x="168" y="120" width="24" height="24"/>
+  <object id="117" type="Fly" gid="12" x="168" y="144" width="24" height="24"/>
+  <object id="118" type="Fly" gid="12" x="120" y="192" width="24" height="24"/>
+  <object id="119" type="Fly" gid="12" x="96" y="192" width="24" height="24"/>
+  <object id="120" type="Fly" gid="12" x="48" y="144" width="24" height="24"/>
+  <object id="121" type="Fly" gid="12" x="48" y="120" width="24" height="24"/>
+ </objectgroup>
+</map>

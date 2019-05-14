@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="7" nextobjectid="60">
  <properties>
-  <property name="Name" value="Level One"/>
+  <property name="Name" value="Lily Pads Two"/>
  </properties>
  <tileset firstgid="1" source="tileset-pond.tsx"/>
  <layer id="1" name="bgTiles" width="10" height="10">

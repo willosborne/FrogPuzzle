@@ -25,6 +25,11 @@ import flixel.tweens.FlxTween;
         var newX = gridX + dX;
         var newY = gridY + dY;
 
+        if (state.outOfBounds(newX, newY))
+        {
+            return onSplash(newX, newY);
+        }
+
         // check if it has somewhere to go
         var plat:PlatformObject = state.getPlatform(newX, newY);
         // if it has nowhere to go, run onSplash and return its result

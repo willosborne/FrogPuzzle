@@ -3,10 +3,17 @@ package;
 class LevelManager
 {
     var levels:Array<String> = [
-        "assets/data/map-test.tmx",
-		"assets/data/map-1.tmx",
-		"assets/data/map-2.tmx",
-		"assets/data/map-3.tmx"
+        // "assets/data/map-test.tmx",
+		// "assets/data/map-1.tmx",
+		// "assets/data/map-2.tmx",
+		// "assets/data/map-3.tmx",
+        // "assets/data/map-4.tmx"
+        "assets/data/lily-1.tmx",
+        "assets/data/lily-2.tmx",
+        "assets/data/lily-3.tmx",
+        "assets/data/block-1.tmx",
+        "assets/data/devilish-1.tmx",
+        "assets/data/win.tmx"
     ];
 
     var currentLevel:Int;

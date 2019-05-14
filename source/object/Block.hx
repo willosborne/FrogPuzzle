@@ -25,6 +25,8 @@ class Block extends PushableObject
 
     override private function onSplash(x:Int, y:Int):BumpAction
     {
+        if (state.outOfBounds(x, y))
+            return BLOCK;
         var sunk = new BlockSunk(state, x, y);
         state.addPlatform(sunk);
 

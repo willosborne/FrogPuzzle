@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="2019.04.18" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="24" tileheight="24" infinite="0" nextlayerid="7" nextobjectid="82">
+ <properties>
+  <property name="Name" value="Lily Pads One"/>
+ </properties>
+ <tileset firstgid="1" source="tileset-pond.tsx"/>
+ <layer id="1" name="bgTiles" width="10" height="10">
+  <properties>
+   <property name="tileset" value="tileset-pond"/>
+  </properties>
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,
+2,3,2,2,2,3,2,2,2,2,
+2,2,3,2,2,2,2,3,2,2,
+2,6,6,2,2,2,2,6,2,2,
+2,6,6,2,2,2,2,6,2,2,
+2,6,6,2,2,2,2,6,6,3,
+2,2,6,2,2,3,2,6,2,2,
+2,2,6,2,3,2,2,6,2,2,
+2,3,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,3,2
+</data>
+ </layer>
+ <objectgroup id="2" name="platforms">
+  <object id="60" template="SolidGround.tx" x="24" y="144"/>
+  <object id="61" template="SolidGround.tx" x="48" y="144"/>
+  <object id="62" template="SolidGround.tx" x="48" y="120"/>
+  <object id="63" template="SolidGround.tx" x="48" y="96"/>
+  <object id="64" template="SolidGround.tx" x="168" y="96"/>
+  <object id="65" template="SolidGround.tx" x="168" y="120"/>
+  <object id="66" template="SolidGround.tx" x="168" y="144"/>
+  <object id="67" template="SolidGround.tx" x="192" y="144"/>
+  <object id="70" template="LilyPad.tx" x="72" y="96"/>
+  <object id="71" template="SolidGround.tx" x="48" y="168"/>
+  <object id="72" template="SolidGround.tx" x="48" y="192"/>
+  <object id="73" template="SolidGround.tx" x="24" y="120"/>
+  <object id="74" template="SolidGround.tx" x="24" y="96"/>
+  <object id="75" template="SolidGround.tx" x="168" y="168"/>
+  <object id="76" template="SolidGround.tx" x="168" y="192"/>
+  <object id="78" template="Tree.tx" x="120" y="96"/>
+  <object id="79" template="Tree.tx" x="96" y="192"/>
+  <object id="80" template="LilyPad.tx" x="120" y="168"/>
+  <object id="81" template="LilyPad.tx" x="96" y="120"/>
+ </objectgroup>
+ <objectgroup id="3" name="objects">
+  <object id="68" template="Player.tx" x="24" y="144"/>
+ </objectgroup>
+ <objectgroup id="4" name="floaters">
+  <object id="69" template="Goal.tx" x="192" y="144"/>
+ </objectgroup>
+</map>
